@@ -2,18 +2,13 @@
 
 The `Featured-Content` repo provides a framework that can be used to feature and filter curated content. Visit https://danwahlin.github.io/Featured-Content/ to see an example of it in action.
 
-## Deployment to GitHub Pages
-
-Enable GitHub Pages to use the `gh-pages` branch by going to `https://github.com/[org_name]/[repo_name]/settings/pages`
-
-Publish:
-
-1. `npm install`
-1. `npm run deploy`
-
 ## Using the "Feature Content" Functionality
 
-1. Create the following `index.html` file:
+1. Create a folder named `public`.
+
+1. Create an `index.html` file in the `public` folder.
+
+1. Add the following content into `index.html`:
 
     ```
     <!DOCTYPE html>
@@ -34,12 +29,28 @@ Publish:
     </html>
     ```
 
-1. Copy the `public/data` folder to where your `index.html` file lives (you only want the `data` folder, not `public/data`).
+1. Copy the `public/data` folder to your `public` folder.
 
-1. Copy the `public/images` folder to where your `index.html` file lives (you only want the `images` folder, not `public/data`).
+1. Copy the `public/images` folder to your `public` folder.
 
-1. Run `index.html` using a web server. If you're working with VS Code you can use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension.
+1. Run `index.html` using a web server. If you're working with VS Code you can use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension to do it. After installing it, right-click on `index.html` and select `Open with Live Server`.
 
-1. Modify the `data/siteContent.json` file so that your content shows.
+1. Modify the `data/siteContent.json` file so that your custom curated content shows instead of the included sample data.
 
 1. Publish your content!
+
+## Deployment to GitHub Pages
+
+1. Add your code project to [GitHub](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github).
+
+1. `npm install gh-pages`.
+
+1. Add the following script into `package.json`:
+
+    ```
+    "scripts": {
+        "deploy": "gh-pages -a -d [your-pro]"
+    }
+    ```
+
+1. `npm run deploy` to deploy your code to the `gh-pages` branch in your repository.
