@@ -37,15 +37,15 @@ The `Featured-Content` repo provides a framework that can be used to feature and
     </html>
     ```
 
-1. Copy the `public/data` folder from this repo to your `public` folder.
+1. Copy the `public/data` folder from the `Featured-Content` repo to your `public` folder.
 
-1. Copy the `public/images` folder from this repo folder to your `public` folder.
+1. Copy the `public/images` folder from the `Featured-Content` repo folder to your `public` folder.
 
-1. Run `index.html` using a web server. If you're working with VS Code you can use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension to do it. After installing it, right-click on `index.html` and select `Open with Live Server`.
+1. Run `index.html` using a web server to try it out locally. If you're working with VS Code you can use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension to do it. After installing it, right-click on `index.html` and select `Open with Live Server`.
 
-1. Modify the `data/siteContent.json` file so that your custom curated content shows instead of the included sample data.
+1. Modify the `public/data/siteContent.json` file in your project so that your custom curated content shows instead of the included sample data.
 
-1. Publish your content!
+1. Publish your content (see below).
 
 ## Deployment to GitHub Pages
 
