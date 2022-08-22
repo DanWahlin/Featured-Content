@@ -10,7 +10,7 @@ The `Featured-Content` repo provides a framework that can be used to feature and
     git clone https://github.com/DanWahlin/Featured-Content.git
     ```
 
-1. Create a new folder for your project (outside of the cloned repo from the previous step).
+1. Create a new folder for your project (outside of the `Featured-Content` cloned repo from the previous step).
 
 1. Create a folder named `public` in your project.
 
