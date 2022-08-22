@@ -1,6 +1,6 @@
 # Featured Content App
 
-The `Featured-Content` repo provides a framework that can be used to feature and filter curated content. Visit <a href="https://danwahlin.github.io/Featured-Content/" target="_blank" rel="noopener noreferrer>https://danwahlin.github.io/Featured-Content</a> to see an example of it in action.
+The `Featured-Content` repo provides a framework that can be used to feature and filter curated content. Visit <a href="https://danwahlin.github.io/Featured-Content/" target="_blank" rel="noopener noreferrer">https://danwahlin.github.io/Featured-Content</a> to see an example of it in action.
 
 ## Using the Featured Content Functionality in Your Own Site
 
