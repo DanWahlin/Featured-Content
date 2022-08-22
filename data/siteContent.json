@@ -66,8 +66,8 @@
                 "position": 1,
                 "imageUrl": "/Featured-Content/images/build-collaborative-apps.png",
                 "url": "https://mybuild.microsoft.com/sessions/a330735b-d4cf-4be0-a8bc-4ceb17c49558?source=sessions",
-                "title": "Building Real-time Collaborative Apps",
-                "description": "Real-time Collaboration using the Microsoft Cloud"
+                "title": "Feature 1 Title",
+                "description": "Feature 1 description"
             }
         },
         {
@@ -113,8 +113,8 @@
                 "position": 2,
                 "imageUrl": "/Featured-Content/images/productivity-hub.png",
                 "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/graph-toolkit-one-productivity-hub",
-                "title": "Build a Personal Productivity Hub",
-                "description": "Build a personal productivity hub"
+                "title": "Feature 2 Title",
+                "description": "Feature 2 description"
             }
         },
         {
@@ -130,8 +130,8 @@
                 "position": 3,
                 "imageUrl": "/Featured-Content/images/microsoft-cloud.png",
                 "url": "https://docs.microsoft.com/azure/architecture/guide/microsoft-cloud/overview",
-                "title": "Build Applications on the Microsoft Cloud",
-                "description": "Learn how you can leverage services across the Microsoft Cloud"
+                "title": "Feature 3 Title",
+                "description": "Feature 3 description"
             }
         }
     ]
