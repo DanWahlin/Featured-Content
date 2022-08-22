@@ -2,7 +2,13 @@
 
 The `Featured-Content` repo provides a framework that can be used to feature and filter curated content. Visit https://danwahlin.github.io/Featured-Content/ to see an example of it in action.
 
-## Using the "Feature Content" Functionality
+## Using the Featured Content Functionality in Your Own Site
+
+1. Clone this repo:
+
+    ```
+    git clone https://github.com/DanWahlin/Featured-Content.git
+    ```
 
 1. Create a folder named `public`.
 
@@ -29,9 +35,9 @@ The `Featured-Content` repo provides a framework that can be used to feature and
     </html>
     ```
 
-1. Copy the `public/data` folder to your `public` folder.
+1. Copy the `public/data` folder from this repo to your `public` folder.
 
-1. Copy the `public/images` folder to your `public` folder.
+1. Copy the `public/images` folder from this repo folder to your `public` folder.
 
 1. Run `index.html` using a web server. If you're working with VS Code you can use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension to do it. After installing it, right-click on `index.html` and select `Open with Live Server`.
 
@@ -49,8 +55,10 @@ The `Featured-Content` repo provides a framework that can be used to feature and
 
     ```
     "scripts": {
-        "deploy": "gh-pages -a -d [your-pro]"
+        "deploy": "gh-pages -d public"
     }
     ```
 
 1. `npm run deploy` to deploy your code to the `gh-pages` branch in your repository.
+
+1. Visit your GitHub Pages site at https://[your-username].github.io/[your-repo-name].
