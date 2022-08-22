@@ -51,7 +51,7 @@ The `Featured-Content` repo provides a framework that can be used to feature and
 
 1. Create a repo for your project in [GitHub](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github).
 
-1. `npm install gh-pages`.
+1. Run `npm install gh-pages` in the root of your project.
 
 1. Add the following script into `package.json`:
 
@@ -61,6 +61,6 @@ The `Featured-Content` repo provides a framework that can be used to feature and
     }
     ```
 
-1. `npm run deploy` to deploy your code to the `gh-pages` branch in your repository.
+1. Run `npm run deploy` to deploy your code to the `gh-pages` branch in your repository.
 
 1. Visit your GitHub Pages site at https://[your-username].github.io/[your-repo-name].
