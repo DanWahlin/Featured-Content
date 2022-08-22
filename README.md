@@ -1,6 +1,6 @@
 # Microsoft Cloud Integrations (code samples, videos, documentation)
 
-The `Filtered-Collection` repo provides an application framework that can be used to feature and filter content. Visit https://danwahlin.github.io/Filtered-Collection/ for an example.
+The `Filtered-Collection` repo provides an application framework that can be used to feature and filter content. Visit https://danwahlin.github.io/Featured-Content/ for an example.
 
 ## Deployment to GitHub Pages
 
