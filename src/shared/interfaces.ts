@@ -55,4 +55,4 @@ export interface CheckboxItem {
     checked: boolean;
 }
 
-export type ContentItemType = 'Code Sample' | 'Documentation' | 'Video';
+export type ContentItemType = 'Code Sample' | 'Documentation' | 'Video' | 'Hands-On Lab';

@@ -34,6 +34,12 @@
     .feature-3 {
         grid-area: feature-3;
     }
+
+    .feature-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        
+    }
     
     .feature-header {
         color: var(--black);
@@ -56,8 +62,6 @@
     }
     
     .feature-footer .icon {
-        height: 18px;
-        width: 18px;
         margin-right: 5px;
     }
 }
