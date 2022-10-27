@@ -128,7 +128,6 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
     useEffect(() => {
         // Fetch items from another resources.
         const endOffset = itemOffset + pageSize;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
         setCurrentItems(items.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(items.length / pageSize));
     }, [itemOffset, pageSize, items]);
