@@ -12,7 +12,8 @@
             "white": "#fff",
             "black": "#000",
             "page-margins": "0px 30px 0px 30px"
-        }
+        },
+        "randomizeFeatures": true
     },
     "navbar": {
         "imageUrl": "/Featured-Content/images/codeWithDanLogo.png",

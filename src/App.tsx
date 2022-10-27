@@ -12,7 +12,7 @@ const App = ({ dataSource }: { dataSource: string }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const getFeatures = (data: SiteContent) => {
-    const features = data.items.filter(item => item.feature).map(item => {
+    let siteFeatures = data.items.filter(item => item.feature).map(item => {
       return {
         position: item.feature?.position,
         type: item.type, 
@@ -20,10 +20,15 @@ const App = ({ dataSource }: { dataSource: string }) => {
         url: item.feature?.url, 
         title: item.feature?.title,
         description: item.feature?.description
-      };
+      } as Feature;
     }).sort((a, b) => a.position! - b.position!) as Feature[];
 
-    setFeatures(features);
+    if (data.metadata?.randomizeFeatures) {
+      console.log('in randomize');
+      siteFeatures = siteFeatures.sort(() => Math.random() - 0.5).slice(0, 3);
+    }
+
+    setFeatures(siteFeatures);
   };
 
   const setCssVariables = (data: SiteContent) => {

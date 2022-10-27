@@ -9,6 +9,7 @@ export interface Metadata {
     title: string;
     description: string;
     themeColors: any;
+    randomizeFeatures: boolean;
 }
 
 export interface Navbar {
@@ -23,7 +24,7 @@ export interface Header {
 }
 
 export interface Feature {
-    position: number;
+    position?: number;
     type: string;
     imageUrl: string;
     url: string;
