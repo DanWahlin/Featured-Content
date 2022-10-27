@@ -73,7 +73,7 @@ const App = ({ dataSource }: { dataSource: string }) => {
           <Navbar data={siteContent.navbar} />
           <Header data={siteContent.header} />
           <Features data={features} />
-          <Search data={siteContent.items} />
+          <Search data={siteContent.items} pageSize={siteContent.metadata.pageSize ?? 10} />
           <section className="footer">
             <div className="version">Version: {packageJson.version}</div>
           </section>

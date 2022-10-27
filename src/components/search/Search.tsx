@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import { CheckboxItem, ContentItem } from '../../shared/interfaces';
 import Checkbox from './Checkbox';
 import SearchResult from './SearchResult';
 import './Search.scss';
 
-const Search = ({ data }: { data: ContentItem[] }) => {
+const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) => {
+    // We start with an empty list of items.
+    const [currentItems, setCurrentItems] = useState<ContentItem[]>([]);
+    const [pageCount, setPageCount] = useState(0);
+    // Here we use item offsets; we could also use page offsets
+    // following the API or data you're working with.
+    const [itemOffset, setItemOffset] = useState(0);
+    
     const [items, setItems] = useState<ContentItem[]>([]);
     const [originalItems, setOriginalItems] = useState<ContentItem[]>([]);
     const [relatedContent, setRelatedContent] = useState<ContentItem[]>([]);
@@ -117,6 +125,20 @@ const Search = ({ data }: { data: ContentItem[] }) => {
 
     }, [data]);
 
+    useEffect(() => {
+        // Fetch items from another resources.
+        const endOffset = itemOffset + pageSize;
+        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        setCurrentItems(items.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(items.length / pageSize));
+    }, [itemOffset, pageSize, items]);
+
+    // Invoke when user click to request another page.
+    const handlePageClick = (event: any) => {
+        const newOffset = (event.selected * pageSize) % items.length;
+        setItemOffset(newOffset);
+    };
+
     return (
         <section className="content">
             <div className="search-container">
@@ -170,7 +192,7 @@ const Search = ({ data }: { data: ContentItem[] }) => {
                 </div>
                 <div className="search-results">
                     <div className="search-results-list">
-                        {items && items.map((item, index) => (
+                        {currentItems && currentItems.map((item, index) => (
                             <SearchResult
                                 key={index}
                                 item={item}
@@ -180,6 +202,16 @@ const Search = ({ data }: { data: ContentItem[] }) => {
                         ))}
                         {!items.length && <div className="search-result-title">No Content Results</div>}
                     </div>
+                    {pageCount > 1 && <div className="paging">
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel="Next"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={5}
+                            pageCount={pageCount}
+                            previousLabel="Previous"
+                        />
+                    </div>}
                 </div>
                 {selectedItem &&
                     <>

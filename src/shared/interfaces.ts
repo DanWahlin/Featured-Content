@@ -9,7 +9,8 @@ export interface Metadata {
     title: string;
     description: string;
     themeColors: any;
-    randomizeFeatures: boolean;
+    randomizeFeatures?: boolean;
+    pageSize?: number;
 }
 
 export interface Navbar {

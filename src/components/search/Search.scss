@@ -101,6 +101,47 @@
     
     .search-results-list {
         padding: 0px 20px 20px 20px;
+        min-height: 600px;
+    }
+}
+
+.paging {
+    ul {
+        margin-left: 30px;
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+
+        li {
+            width: 50px;
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+            display: list-item;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        li a {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            padding: 0.33rem 0.75rem;
+        }
+
+        li:hover {
+            background-color: var(--light-gray);
+        }
+
+        li.previous, li.next {
+            width: 100px;
+        }
+
+        li.selected {
+            color: #fff;
+            font-weight: bold;
+            background-color: var(--light-blue);
+        }
     }
 }
 
