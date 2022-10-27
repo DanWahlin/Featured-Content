@@ -24,7 +24,6 @@ const App = ({ dataSource }: { dataSource: string }) => {
     }).sort((a, b) => a.position! - b.position!) as Feature[];
 
     if (data.metadata?.randomizeFeatures) {
-      console.log('in randomize');
       siteFeatures = siteFeatures.sort(() => Math.random() - 0.5).slice(0, 3);
     }
 
