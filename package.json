@@ -1,6 +1,6 @@
 {
   "name": "featured-content",
-  "version": "0.7",
+  "version": "0.7.1",
   "private": true,
   "homepage": "https://microsoft.github.io/Featured-Content",
   "scripts": {
