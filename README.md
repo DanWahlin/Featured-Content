@@ -25,8 +25,8 @@ The `Featured-Content` repo provides a framework that can be used to feature and
         <meta charset="utf-8" />
         <link rel="icon" href="./favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script defer="defer" src="https://cdn.jsdelivr.net/gh/danwahlin/Featured-Content@gh-pages/dist/main-0.5.7.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/gh/danwahlin/Featured-Content@gh-pages/dist/main-0.5.7.min.css" rel="stylesheet">
+        <script defer="defer" src="https://cdn.jsdelivr.net/gh/danwahlin/Featured-Content@gh-pages/dist/main-0.6.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/gh/danwahlin/Featured-Content@gh-pages/dist/main-0.6.min.css" rel="stylesheet">
         <title>Featured Content</title>
     </head>
 
