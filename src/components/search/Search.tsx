@@ -12,6 +12,7 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
     const [itemOffset, setItemOffset] = useState(0);
+    const [queryParamsFilters, setQueryParamsFilters] = useState<string[]>([]);
     
     const [items, setItems] = useState<ContentItem[]>([]);
     const [originalItems, setOriginalItems] = useState<ContentItem[]>([]);
@@ -29,8 +30,11 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
             }
             return item;
         }).sort((a, b) => a.category.localeCompare(b.category));
+
         setSelectedItem(null);
-        setFunc(updatedItems);
+        if (setFunc) {
+            setFunc(updatedItems);
+        }
     };
 
     const filterContentItems = () => {
@@ -81,6 +85,30 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
     }
 
     useEffect(() => {
+        const parseParams = (querystring: string) => {
+            // parse query string
+            const params = new URLSearchParams(querystring);
+            const obj = {} as any;
+            // iterate over all keys
+            for (const key of params.keys()) {
+              if (params.getAll(key).length > 1) {
+                obj[key] = params.getAll(key);
+              } else {
+                obj[key] = params.get(key);
+              }
+            }
+            return obj;
+        };
+        let params = parseParams(window.location.search);
+        if (params.filters) {
+            // split params into array and lowercase them
+            const filters = params.filters.split(',').map((filter: string) => filter.trim().toLowerCase());
+            setQueryParamsFilters(filters);
+        }
+
+    }, []);
+
+    useEffect(() => {
         filterContentItems();
         // eslint-disable-next-line
     }, [searchText, types, cloudCategories, services]);
@@ -95,10 +123,12 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
                 .flat()
                 .filter((value, index, self) => self.indexOf(value) === index).sort()
                 .map((value, index) => {
+                    // See if filter=x,y,z query params are present and match item value
+                    const checked = queryParamsFilters.includes(value.toString().trim().toLowerCase());
                     return {
                         id: index,
                         category: value as string,
-                        checked: false
+                        checked
                     };
                 })
                 .sort((a, b) => a.category.localeCompare(b.category));
@@ -123,7 +153,7 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
         createCategories(items);
         setItems(items);
 
-    }, [data]);
+    }, [data, queryParamsFilters]);
 
     useEffect(() => {
         // Fetch items from another resources.
