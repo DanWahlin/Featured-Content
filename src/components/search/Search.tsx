@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { CheckboxItem, ContentItem } from '../../shared/interfaces';
 import Checkbox from './Checkbox';
@@ -11,9 +12,7 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
     const [pageCount, setPageCount] = useState(0);
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
-    const [itemOffset, setItemOffset] = useState(0);
-    const [queryParamsFilters, setQueryParamsFilters] = useState<string[]>([]);
-    
+    const [itemOffset, setItemOffset] = useState(0);   
     const [items, setItems] = useState<ContentItem[]>([]);
     const [originalItems, setOriginalItems] = useState<ContentItem[]>([]);
     const [relatedContent, setRelatedContent] = useState<ContentItem[]>([]);
@@ -23,10 +22,29 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
     const [types, setTypes] = useState<CheckboxItem[]>([]);
     const [services, setServices] = useState<CheckboxItem[]>([]);
 
+    // Handle query params on URL
+    const [queryParamsFilters, setQueryParamsFilters] = useState<string[]>([]);
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const updateCheckStatus = (index: any, items: CheckboxItem[], setFunc: any) => {
         const updatedItems = items.map(item => {
             if (item.id === index) {
                 item.checked = !item.checked;
+
+                // Add or remove filter from query params
+                if (item.checked) {
+                    if (!queryParamsFilters.includes(item.category.toLowerCase())) {
+                        queryParamsFilters.push(item.category.toLowerCase());
+                    }
+                }
+                else {
+                    // remove item.category from queryParamsFilters
+                    const index = queryParamsFilters.indexOf(item.category.toLowerCase());
+                    if (index > -1) {
+                        queryParamsFilters.splice(index, 1);
+                    }
+                }
             }
             return item;
         }).sort((a, b) => a.category.localeCompare(b.category));
@@ -35,6 +53,7 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
         if (setFunc) {
             setFunc(updatedItems);
         }
+        navigate(`${location.pathname}?filters=${queryParamsFilters.join(',')}`);
     };
 
     const filterContentItems = () => {
@@ -85,28 +104,17 @@ const Search = ({ data, pageSize }: { data: ContentItem[], pageSize: number }) =
     }
 
     useEffect(() => {
-        const parseParams = (querystring: string) => {
-            // parse query string
-            const params = new URLSearchParams(querystring);
-            const obj = {} as any;
-            // iterate over all keys
-            for (const key of params.keys()) {
-              if (params.getAll(key).length > 1) {
-                obj[key] = params.getAll(key);
-              } else {
-                obj[key] = params.get(key);
-              }
-            }
-            return obj;
-        };
-        let params = parseParams(window.location.search);
-        if (params.filters) {
+        if (queryParamsFilters.length > 0) return;
+
+        const params = new URLSearchParams(location.search);
+        const filters = params.get('filters');
+        if (filters) {
             // split params into array and lowercase them
-            const filters = params.filters.split(',').map((filter: string) => filter.trim().toLowerCase());
-            setQueryParamsFilters(filters);
+            const filtersList = filters.split(',').map((filter: string) => filter.trim().toLowerCase());
+            setQueryParamsFilters(filtersList);
         }
 
-    }, []);
+    }, [location.search, queryParamsFilters.length]);
 
     useEffect(() => {
         filterContentItems();

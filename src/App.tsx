@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Features from './components/features/Features';
 import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
@@ -64,7 +65,7 @@ const App = ({ dataSource }: { dataSource: string }) => {
   }, [dataSource]);
 
   return (
-    <>
+  <Router>
     {isLoading 
       ? 
         <div>Loading...</div> 
@@ -79,7 +80,7 @@ const App = ({ dataSource }: { dataSource: string }) => {
           </section>
         </>
     }
-    </>
+  </Router>
   );
 }
 
