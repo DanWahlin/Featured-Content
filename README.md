@@ -64,3 +64,10 @@ The `Featured-Content` repo provides a framework that can be used to feature and
 1. Run `npm run deploy` to deploy your code to the `gh-pages` branch in your repository.
 
 1. Visit your GitHub Pages site at https://[your-username].github.io/[your-repo-name].
+
+## Updating and Deploying this Project
+
+1. Update the package version in `package.json`.
+1. Update the readme (where the scripts & styles are hosted) so it uses the latest package version.
+1. Run `npm run build` to build the project if you want to ensure it looks good first.
+1. Run `npm run deploy` to deploy the project to GitHub Pages (it will do a build as well).
